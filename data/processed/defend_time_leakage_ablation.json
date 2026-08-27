@@ -1,0 +1,25 @@
+{
+  "with_capture_clock": {
+    "precision": 0.9518,
+    "recall": 0.8061,
+    "f1": 0.8729,
+    "pr_auc": 0.8796,
+    "roc_auc": 0.98,
+    "threshold": 0.9645,
+    "n_positive": 98,
+    "n_total": 56962,
+    "n_features": 30
+  },
+  "without_capture_clock": {
+    "precision": 0.8913,
+    "recall": 0.8367,
+    "f1": 0.8632,
+    "pr_auc": 0.8768,
+    "roc_auc": 0.9793,
+    "threshold": 0.6928,
+    "n_positive": 98,
+    "n_total": 56962,
+    "n_features": 29
+  },
+  "note": "ULB's `Time` is seconds since the first row of one particular two-day capture. No live authorization scorer has an equivalent value, so any lift it provides is lift the deployed model would not get. Reported here so the exclusion is a measured decision rather than an assertion. Both arms use the identical recipe, split and seed."
+}

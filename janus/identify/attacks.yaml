@@ -1,0 +1,358 @@
+# Project JANUS Attack Atlas, 17 attack vectors across 4 categories.
+#
+# status is honest per-attack, derived from what actually runs in this
+# repo, not aspirational:
+#   simulated; a generator produces synthetic instances AND a defend
+#                    family is trained/evaluated against them, with real
+#                    measured numbers persisted to data/processed/.
+#   modeled: grounded taxonomy entry with a specific, named
+#                    structural mechanism and citation, and at least a
+#                    partial hook in the sandbox/rules (e.g. a related
+#                    hard rule or scenario), but no dedicated end-to-end
+#                    generator+detector pair.
+#   taxonomy_only: researched and documented, no simulation or detection
+#                    built in this repo.
+#
+# simulated_by / detected_by reference concrete module paths so the Atlas
+# UI's coverage claim is derived from this file, not asserted separately.
+
+- id: A1
+  category: A
+  category_name: "Identity & Onboarding Fraud"
+  name: "Synthetic Identity Fraud 2.0"
+  mechanism: >
+    LLM-generated fake identities with internally consistent synthetic
+    credit histories; diffusion-generated selfies matched to fabricated ID
+    documents, defeating document+selfie cross-checks at account opening.
+  rails: [card, aba]
+  channels: [online_onboarding]
+  actors: [fraud_ring]
+  precursor_signals: ["thin/zero prior credit history with implausibly complete profile", "device/IP reuse across many new applications"]
+  observable_features: ["application-velocity per device fingerprint", "profile-completeness vs. credit-file-age mismatch", "machine-speed form completion with few corrections", "declared income unsupported by the rest of the application"]
+  atlas_mapping: null
+  status: simulated
+  grounding: ["Datos Insights, Cyber-fraud integration for the new age of risk (2025)"]
+  simulated_by: ["janus.generate.identity.synthetic_identity.generate_onboarding_population (cheap / moderate / advanced ring sophistication tiers)"]
+  detected_by: ["janus.generate.identity.synthetic_identity.train_onboarding_detector"]
+
+- id: A2
+  category: A
+  category_name: "Identity & Onboarding Fraud"
+  name: "Deepfake Video-KYC Bypass"
+  mechanism: >
+    Real-time face-swap/diffusion models defeating liveness checks during
+    remote video onboarding.
+  rails: [card, aba]
+  channels: [video_kyc]
+  actors: [fraud_ring]
+  precursor_signals: ["liveness-check pass with abnormal micro-motion signature"]
+  observable_features: []
+  atlas_mapping: null
+  status: taxonomy_only
+  grounding: ["Recorded Future, Payment Fraud Report (2025/2026)"]
+  simulated_by: []
+  detected_by: []
+
+- id: A3
+  category: A
+  category_name: "Identity & Onboarding Fraud"
+  name: "AI-Forged Supporting Documents"
+  mechanism: >
+    Diffusion/template models forging utility bills, payslips, and IDs
+    realistic enough to pass OCR-based document verification.
+  rails: [card, aba]
+  channels: [document_upload]
+  actors: [fraud_ring]
+  precursor_signals: ["document metadata/EXIF inconsistent with claimed capture device"]
+  observable_features: []
+  atlas_mapping: null
+  status: taxonomy_only
+  grounding: ["Recorded Future, Payment Fraud Report (2025/2026)"]
+  simulated_by: []
+  detected_by: []
+
+- id: A4
+  category: A
+  category_name: "Identity & Onboarding Fraud"
+  name: "Voice-Clone Account Takeover"
+  mechanism: >
+    Cloned voice used against IVR authentication or call-center OTP-reset
+    flows to take over an existing account (distinct from A6's downstream
+    payment-authorization fraud, this targets account access itself).
+  rails: [card, aba]
+  channels: [ivr, call_center]
+  actors: [fraud_ring]
+  precursor_signals: ["OTP-reset request immediately followed by payment-instrument change"]
+  observable_features: []
+  atlas_mapping: null
+  status: taxonomy_only
+  grounding: ["Mastercard Scam Protect / NuData public materials"]
+  simulated_by: []
+  detected_by: []
+
+- id: B5
+  category: B
+  category_name: "Social-Engineering & Authorization Fraud"
+  name: "Hyper-personalized AI Phishing/Smishing"
+  mechanism: >
+    LLM-crafted messages personalized at scale using scraped/breached
+    data, driving the victim to authorize a push payment.
+  rails: [instant_rail, aba]
+  channels: [sms, email]
+  actors: [fraud_ring]
+  precursor_signals: ["unsolicited contact immediately preceding a first-time beneficiary payment"]
+  observable_features: []
+  atlas_mapping: null
+  status: taxonomy_only
+  grounding: ["Recorded Future, Payment Fraud Report (2025/2026)"]
+  simulated_by: []
+  detected_by: []
+
+- id: B6
+  category: B
+  category_name: "Social-Engineering & Authorization Fraud"
+  name: "Deepfake \"Emergency\" Voice/Video Scams"
+  mechanism: >
+    Cloned voice/video of a family member or executive used to authorize
+    an urgent push payment. Deliberately does not generate or detect
+    audio; the downstream transaction fingerprint (first-time
+    beneficiary, population-atypical amount, off-hours timing, channel
+    switch) is what's modeled and detected instead.
+  rails: [instant_rail]
+  channels: [phone, video_call]
+  actors: [fraud_ring]
+  precursor_signals: ["first-time beneficiary", "off-hours timing", "amount in the upper half of the type's real fraud range"]
+  observable_features: ["amount_percentile_within_type", "hour_of_day", "is_off_hours", "channel_switch"]
+  atlas_mapping: null
+  status: simulated
+  grounding: ["Mastercard Scam Protect public materials; APP fraud projected to reach $15B by 2028 in the US (Recorded Future)"]
+  simulated_by: ["janus.generate.sequence.voice_scam.inject_voice_scam_transactions"]
+  detected_by: ["janus.generate.sequence.voice_scam.train_voice_scam_detector"]
+
+- id: B7
+  category: B
+  category_name: "Social-Engineering & Authorization Fraud"
+  name: "AI Romance / \"Pig-Butchering\" Bots"
+  mechanism: >
+    Persistent LLM-run chat personas that groom victims over weeks toward
+    fraudulent "investment" payments.
+  rails: [instant_rail, crypto_offramp]
+  channels: [dating_app, messaging]
+  actors: [fraud_ring]
+  precursor_signals: ["escalating payment amounts to a single new beneficiary over a multi-week relationship"]
+  observable_features: []
+  atlas_mapping: null
+  status: taxonomy_only
+  grounding: ["Datos Insights, Cyber-fraud integration for the new age of risk (2025)"]
+  simulated_by: []
+  detected_by: []
+
+- id: B8
+  category: B
+  category_name: "Social-Engineering & Authorization Fraud"
+  name: "GenAI Fake Storefronts & Support Chat"
+  mechanism: >
+    LLM+template-generated phishing storefronts and fake support chatbots
+    that harvest card data. Structurally related to Category D's catalog-
+    poisoning mechanism (a fake storefront is the same "attacker-controlled
+    merchant content" surface an agentic shopping session also has to
+    trust), but targets a human shopper directly rather than an AI agent.
+  rails: [card]
+  channels: [web, chat]
+  actors: [fraud_ring]
+  precursor_signals: ["newly registered domain, no prior transaction history, template-generated product copy"]
+  observable_features: []
+  atlas_mapping: null
+  status: modeled
+  grounding: ["Recorded Future, Payment Fraud Report (2025/2026), Magecart/digital-skimming industrialization"]
+  simulated_by: []
+  detected_by: []
+
+- id: B9
+  category: B
+  category_name: "Social-Engineering & Authorization Fraud"
+  name: "Voice-Cloned OTP/2FA Social Engineering"
+  mechanism: >
+    Impersonating the cardholder in real time against bank call-center
+    authentication to authorize a transaction or reset a credential.
+  rails: [card, aba]
+  channels: [call_center]
+  actors: [fraud_ring]
+  precursor_signals: ["call-center authentication success followed immediately by high-risk action"]
+  observable_features: []
+  atlas_mapping: null
+  status: taxonomy_only
+  grounding: ["Mastercard Scam Protect public materials"]
+  simulated_by: []
+  detected_by: []
+
+- id: C10
+  category: C
+  category_name: "Transaction & Network-Level Attacks"
+  name: "LLM-Automated Card Testing (\"Carding Bots\")"
+  mechanism: >
+    Agents that iterate BIN ranges and mutate transaction parameters,
+    adapting to declines to evade velocity checks, a rapid burst of
+    small, varied-amount authorization attempts with a high decline rate
+    and no human-plausible pacing.
+  rails: [card]
+  channels: [card_not_present]
+  actors: [fraud_ring, bot]
+  precursor_signals: ["burst of >15 auth attempts against one card within a tight window, high decline rate, stepping amounts"]
+  observable_features: ["event sequence: auth_declined/auth_approved cadence", "amount stepping pattern"]
+  atlas_mapping: "AML.T0015 (adjacent, automated probing)"
+  status: simulated
+  grounding: ["standard carding-bot pattern, well-documented in issuer risk literature"]
+  simulated_by: ["janus.generate.sequence.simulator.simulate_population (card_testing_bot behavior)"]
+  detected_by: ["janus.defend.sequence.train_sequence_transformer"]
+
+- id: C11
+  category: C
+  category_name: "Transaction & Network-Level Attacks"
+  name: "Adversarial Evasion of Scoring Models"
+  mechanism: >
+    Minimally-perturbed fraud transactions crafted via black-box
+    query-based search to slip under a deployed model's decision
+    threshold, without changing the underlying fraudulent intent.
+  rails: [card]
+  channels: [card_not_present, card_present]
+  actors: [fraud_ring]
+  precursor_signals: ["transaction narrowly below the model's decision threshold on features known to be attacker-observable"]
+  observable_features: []
+  atlas_mapping: "AML.T0043 (Craft Adversarial Data)"
+  status: simulated
+  grounding: ["Kantchelian et al. 2016, Evasion and Hardening of Tree Ensemble Classifiers"]
+  simulated_by: ["janus.generate.adversarial.evasion.greedy_evade"]
+  detected_by: ["janus.generate.adversarial.evasion.iterative_harden (adversarially-retrained janus.defend.gbm)"]
+
+- id: C12
+  category: C
+  category_name: "Transaction & Network-Level Attacks"
+  name: "Synthetic Mule-Network Orchestration"
+  mechanism: >
+    AI-coordinated fan-in (many sources -> one mule account) followed by
+    fan-out (one mule -> many sinks) within a tight time window, skimming
+    a cut before forwarding; structuring designed to stay under
+    single-hop velocity thresholds while moving funds in aggregate.
+  rails: [instant_rail]
+  channels: [mobile_money, bank_transfer]
+  actors: [fraud_ring, mule]
+  precursor_signals: ["fan-in count 6-18 within a 2-step window followed by fan-out within 1-4 steps"]
+  observable_features: ["in_n_unique_counterparties", "flow_ratio", "time_to_first_outflow"]
+  atlas_mapping: "AML.T0048-adjacent (network-level coordination)"
+  status: simulated
+  grounding: ["PaySim structuring/smurfing literature; RBI/UPI instant-rail hosting context"]
+  simulated_by: ["janus.generate.graph.mule_ring.inject_mule_rings"]
+  detected_by: ["janus.generate.graph.detect.train_mule_detector"]
+
+- id: C13
+  category: C
+  category_name: "Transaction & Network-Level Attacks"
+  name: "GenAI-Coached Friendly Fraud"
+  mechanism: >
+    LLMs generating optimized, individually-plausible chargeback
+    narratives at scale to maximize first-party dispute win-rate.
+  rails: [card]
+  channels: [dispute_portal]
+  actors: [fraud_ring]
+  precursor_signals: ["dispute narrative template-similarity across many claimants"]
+  observable_features: []
+  atlas_mapping: null
+  status: taxonomy_only
+  grounding: ["Datos Insights, Cyber-fraud integration for the new age of risk (2025)"]
+  simulated_by: []
+  detected_by: []
+
+- id: D14
+  category: D
+  category_name: "Agentic Commerce Fraud"
+  name: "Prompt-Injection Hijack of Shopping Agents"
+  mechanism: >
+    Malicious content embedded in a merchant's own product listing
+    covertly instructs a consumer's AI shopping agent to change its
+    selection, quantity, stated price, or the account a payment
+    instrument is requested against, while the resulting checkout stays
+    cryptographically valid under AP2/UCP (execution integrity preserved,
+    reasoning integrity broken). The umbrella mechanism for D14-D17 below;
+    branded_whisper/cart_inflation/currency_locale_confusion/vault_whisper
+    are its four concretely implemented variants in this repo.
+  rails: [agentic_token]
+  channels: [ap2_ucp_sandbox]
+  actors: [fraud_ring, malicious_merchant]
+  precursor_signals: ["catalog text classified high-risk by the injection-text classifier", "checkout that violates the Open Checkout Mandate's own constraints"]
+  observable_features: ["content-classifier score", "maximal-flow line-item constraint satisfaction", "purchase-summary/total amount match"]
+  atlas_mapping: "AML.T0051 (indirect prompt injection)"
+  status: simulated
+  grounding: ["arXiv:2601.22569, \"Whispers of Wealth\" (Jan 2026), 100% indirect-injection success against a working AP2 shopping agent, reproduced here at 100% against a naive baseline"]
+  simulated_by:
+    - "janus.generate.agentic.red_team (branded_whisper, cart_inflation, currency_locale_confusion, vault_whisper)"
+  detected_by:
+    - "janus.defend.firewall.MandateFirewall (hard_rules + nlp.InjectionTextClassifier)"
+
+- id: D15
+  category: D
+  category_name: "Agentic Commerce Fraud"
+  name: "Synthetic / Impersonated Agent Identity"
+  mechanism: >
+    A fraudulent agent impersonates a legitimate merchant or consumer
+    agent inside an agent-to-agent negotiation to initiate an
+    unauthorized transaction, exploiting the fact that AP2's Merchant
+    object (id/name/website) is self-reported with no PKI binding to a
+    verified domain/certificate.
+  rails: [agentic_token]
+  channels: [a2a_negotiation]
+  actors: [fraud_ring]
+  precursor_signals: ["merchant identity in a checkout_jwt not present in the mandate's allowed_merchants set"]
+  observable_features: ["merchant_allowed hard-rule verdict"]
+  atlas_mapping: "AML.T0048-adjacent (impersonation)"
+  status: modeled
+  grounding: ["AP2 spec (github.com/google-agentic-commerce/AP2), Merchant object has no certificate/PKI binding"]
+  simulated_by: []
+  detected_by: ["janus.defend.hard_rules.evaluate_checkout (merchant allow-list check)"]
+
+- id: D16
+  category: D
+  category_name: "Agentic Commerce Fraud"
+  name: "Adversarial Listing Manipulation"
+  mechanism: >
+    GenAI-crafted product listings and reviews engineered specifically to
+    manipulate an autonomous purchasing agent's decision logic, biasing
+    product selection via fake authority/safety framing (Branded Whisper),
+    inflating quantity via a fake fulfillment-unit directive (Cart
+    Inflation), or spoofing the confirmed price via injected structured
+    data (Currency/Locale Confusion).
+  rails: [agentic_token]
+  channels: [ap2_ucp_sandbox]
+  actors: [malicious_merchant]
+  precursor_signals: ["catalog description containing an authority/urgency keyword cluster or an embedded structured-data price/quantity directive"]
+  observable_features: ["content-classifier score", "extracted quantity/price directive presence"]
+  atlas_mapping: "AML.T0051 (indirect prompt injection)"
+  status: simulated
+  grounding: ["Independently derived from this repo's own adaptive red-team campaigns against the AP2 sandbox"]
+  simulated_by:
+    - "janus.generate.agentic.red_team (branded_whisper, cart_inflation, currency_locale_confusion)"
+  detected_by:
+    - "janus.defend.hard_rules (checkout constraints, purchase-summary amount check)"
+    - "janus.defend.nlp.InjectionTextClassifier"
+
+- id: D17
+  category: D
+  category_name: "Agentic Commerce Fraud"
+  name: "Agent Token Theft & Replay"
+  mechanism: >
+    A leaked or misdirected agent payment credential is used by a party
+    other than the authenticated session, modeled here as the Vault
+    Whisper mechanism: injected content persuades the agent to pass a
+    foreign account_ref to the Credentials Provider, a payments-domain
+    instance of a standard broken-object-level-authorization (BOLA)
+    pattern (OWASP API1:2023).
+  rails: [agentic_token]
+  channels: [ap2_ucp_sandbox]
+  actors: [fraud_ring]
+  precursor_signals: ["account_ref present and not equal to the authenticated session's user_id"]
+  observable_features: ["account_ref hard-rule verdict"]
+  atlas_mapping: "AML.T0086 (adjacent, credential misuse)"
+  status: simulated
+  grounding: ["arXiv:2601.22569, \"Whispers of Wealth\", cross-account data leak via credential-provider interaction, reproduced here at 100% against a naive baseline"]
+  simulated_by: ["janus.generate.agentic.red_team (vault_whisper)"]
+  detected_by: ["janus.defend.hard_rules.evaluate_account_ref"]

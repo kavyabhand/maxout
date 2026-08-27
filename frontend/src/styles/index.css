@@ -1,0 +1,189 @@
+@import "tailwindcss";
+
+/*
+ * JANUS design tokens.
+ *
+ * The register is a live instrument, not a brochure: near-flat surfaces,
+ * hairline rules instead of shadowed cards, a tight type scale, and
+ * tabular numerals everywhere a figure appears. Depth is reserved for the
+ * two things that are genuinely raised; the run control and an active
+ * simulation node, so elevation still means something when it is used.
+ */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --color-canvas: #ffffff;
+  --color-surface-0: #ffffff;
+  --color-surface-1: #fafafb;
+  --color-surface-2: #f4f5f7;
+  --color-surface-3: #eaecef;
+  --color-surface-4: #d7dae0;
+
+  --color-hairline: #e9eaee;
+  --color-border: #dcdee4;
+  --color-border-strong: #b9bdc7;
+
+  --color-text-primary: #101216;
+  --color-text-secondary: #4c525f;
+  --color-text-tertiary: #767d8c;
+  --color-text-disabled: #a8adb8;
+
+  /* The two halves of the mark. Kept separate from the signal colours
+     below: those encode meaning in charts and badges and cannot be
+     retuned for branding, and the mark cannot drift for legibility. */
+  --color-brand-red: #b4242b;
+  --color-brand-teal: #23575e;
+
+  /* Signal colours, used semantically and never decoratively: red is an
+     attack or a decline, orange is work in flight, amber is caution. */
+  --color-flow: #ff5f00;
+  --color-caution: #f79e1b;
+
+  --color-attack: #eb001b;
+  --color-attack-strong: #c40017;
+  --color-attack-dim: #f6b6bd;
+  --color-attack-bg: #fef4f5;
+
+  /* Defense green sits deliberately outside the triad: with red, orange
+     and yellow all carrying meaning, "safe" needs a hue that cannot be
+     mistaken for any of them at a glance. */
+  --color-defense: #0e8a63;
+  --color-defense-strong: #0a6f4f;
+  --color-defense-dim: #a9dcc9;
+  --color-defense-bg: #f3faf7;
+
+  --color-identify: #1f4b8e;
+  --color-generate: #ff5f00;
+  --color-defend: #0e8a63;
+
+  --color-tier-approve: #0e8a63;
+  --color-tier-stepup: #1f4b8e;
+  --color-tier-review: #c97a0b;
+  --color-tier-review-bg: #fdf7ec;
+  --color-tier-decline: #eb001b;
+
+  --color-focus: #1f4b8e;
+
+  --radius-panel: 12px;
+  --radius-control: 8px;
+  --radius-node: 8px;
+
+  --shadow-raise: 0 1px 2px rgba(16, 20, 28, 0.06);
+  --shadow-run: 0 1px 2px rgba(235, 0, 27, 0.18), 0 6px 16px -8px rgba(235, 0, 27, 0.45);
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Every figure on these screens is a measurement, so lock the numerals
+     to a fixed advance width, counters and live values must not make
+     the layout twitch as they change. */
+  .tabular-nums,
+  table,
+  .font-mono {
+    font-variant-numeric: tabular-nums;
+  }
+
+  ::selection {
+    background: var(--color-caution);
+    color: var(--color-text-primary);
+  }
+
+  ::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-surface-4);
+    border-radius: 999px;
+    border: 2px solid var(--color-canvas);
+  }
+}
+
+@layer utilities {
+  @keyframes janus-halo {
+    0% {
+      r: 7;
+      opacity: 0.5;
+    }
+    100% {
+      r: 17;
+      opacity: 0;
+    }
+  }
+
+  @keyframes janus-blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.3;
+    }
+  }
+
+  @keyframes janus-rise {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes janus-dash {
+    to {
+      stroke-dashoffset: -12;
+    }
+  }
+
+  /* Expanding ring around the simulation node currently executing. */
+  .animate-halo {
+    animation: janus-halo 1.4s ease-out infinite;
+  }
+
+  .animate-blink {
+    animation: janus-blink 1.4s ease-in-out infinite;
+  }
+
+  .animate-rise {
+    animation: janus-rise 0.28s cubic-bezier(0.2, 0.8, 0.3, 1) both;
+  }
+
+  .animate-dash {
+    animation: janus-dash 0.7s linear infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

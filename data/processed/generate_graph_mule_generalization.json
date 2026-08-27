@@ -1,0 +1,24 @@
+{
+  "in_distribution_obvious_style": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "pr_auc": 1.0,
+    "roc_auc": 1.0,
+    "threshold": 0.9998,
+    "n_positive": 18,
+    "n_total": 6018
+  },
+  "out_of_distribution_subtle_style": {
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "pr_auc": 1.0,
+    "roc_auc": 1.0,
+    "threshold": 0.3851,
+    "n_positive": 40,
+    "n_total": 10040
+  },
+  "n_train_rings_obvious": 60,
+  "n_test_rings_subtle": 40
+}

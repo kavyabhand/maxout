@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "janus"
+version = "0.1.0"
+description = "Closed-loop adversarial AI system for GenAI-powered payment fraud: Identify, Generate, Defend, Mastercard Innovation Challenge 2026"
+requires-python = ">=3.12"
+
+[tool.setuptools.packages.find]
+include = ["janus*", "backend*"]
+
+[tool.setuptools.package-data]
+"janus.identify" = ["attacks.yaml"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

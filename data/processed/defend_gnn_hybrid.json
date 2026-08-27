@@ -1,0 +1,30 @@
+{
+  "gnn_only": {
+    "precision": 0.4604,
+    "recall": 0.3946,
+    "f1": 0.425,
+    "pr_auc": 0.4116,
+    "roc_auc": 0.8709,
+    "threshold": 0.8178,
+    "n_positive": 4242,
+    "n_total": 118108
+  },
+  "hybrid": {
+    "precision": 0.6894,
+    "recall": 0.495,
+    "f1": 0.5763,
+    "pr_auc": 0.5919,
+    "roc_auc": 0.9124,
+    "threshold": 0.865,
+    "n_positive": 4242,
+    "n_total": 118108
+  },
+  "device": "cpu",
+  "n_nodes": 606270,
+  "n_edges": 3460248,
+  "epochs": 120,
+  "dataset": "IEEE-CIS Fraud Detection (aliceczr/ieee-fraud-detection mirror)",
+  "n_rows": 590540,
+  "n_fraud": 20663,
+  "sample_frac": null
+}

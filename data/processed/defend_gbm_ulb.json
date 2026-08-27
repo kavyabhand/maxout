@@ -1,0 +1,15 @@
+{
+  "precision": 0.8913,
+  "recall": 0.8367,
+  "f1": 0.8632,
+  "pr_auc": 0.8768,
+  "roc_auc": 0.9793,
+  "threshold": 0.6928,
+  "n_positive": 98,
+  "n_total": 56962,
+  "train_latency_s": 6.482379674911499,
+  "inference_ms_per_1000_rows": 6.601095199584961,
+  "dataset": "ULB European Credit Card Fraud (David-Egea/Creditcard-fraud-detection mirror)",
+  "n_rows": 284807,
+  "n_fraud": 492
+}

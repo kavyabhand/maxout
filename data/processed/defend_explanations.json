@@ -1,0 +1,281 @@
+{
+  "model": "gbm_ulb",
+  "base_value": 2.6627814769744873,
+  "global_mean_abs_shap": [
+    {
+      "feature": "V14",
+      "mean_abs_shap": 3.914143
+    },
+    {
+      "feature": "V4",
+      "mean_abs_shap": 1.472984
+    },
+    {
+      "feature": "V10",
+      "mean_abs_shap": 1.411231
+    },
+    {
+      "feature": "V12",
+      "mean_abs_shap": 0.987275
+    },
+    {
+      "feature": "V16",
+      "mean_abs_shap": 0.67495
+    },
+    {
+      "feature": "V17",
+      "mean_abs_shap": 0.617335
+    },
+    {
+      "feature": "V3",
+      "mean_abs_shap": 0.576609
+    },
+    {
+      "feature": "V7",
+      "mean_abs_shap": 0.428897
+    },
+    {
+      "feature": "V8",
+      "mean_abs_shap": 0.367559
+    },
+    {
+      "feature": "V11",
+      "mean_abs_shap": 0.345171
+    },
+    {
+      "feature": "V21",
+      "mean_abs_shap": 0.2992
+    },
+    {
+      "feature": "V27",
+      "mean_abs_shap": 0.207749
+    },
+    {
+      "feature": "V23",
+      "mean_abs_shap": 0.160402
+    },
+    {
+      "feature": "V5",
+      "mean_abs_shap": 0.1603
+    },
+    {
+      "feature": "V13",
+      "mean_abs_shap": 0.157062
+    },
+    {
+      "feature": "V25",
+      "mean_abs_shap": 0.121962
+    },
+    {
+      "feature": "V6",
+      "mean_abs_shap": 0.104576
+    },
+    {
+      "feature": "V1",
+      "mean_abs_shap": 0.103282
+    },
+    {
+      "feature": "V19",
+      "mean_abs_shap": 0.100975
+    },
+    {
+      "feature": "V15",
+      "mean_abs_shap": 0.091912
+    },
+    {
+      "feature": "Amount",
+      "mean_abs_shap": 0.091167
+    },
+    {
+      "feature": "V24",
+      "mean_abs_shap": 0.083607
+    },
+    {
+      "feature": "V18",
+      "mean_abs_shap": 0.078525
+    },
+    {
+      "feature": "V2",
+      "mean_abs_shap": 0.068836
+    },
+    {
+      "feature": "V28",
+      "mean_abs_shap": 0.058775
+    },
+    {
+      "feature": "V22",
+      "mean_abs_shap": 0.058665
+    },
+    {
+      "feature": "V20",
+      "mean_abs_shap": 0.041176
+    },
+    {
+      "feature": "V26",
+      "mean_abs_shap": 0.036583
+    },
+    {
+      "feature": "V9",
+      "mean_abs_shap": 0.035539
+    }
+  ],
+  "examples": [
+    {
+      "risk_score": 0.999994,
+      "true_label": 1,
+      "top_reasons": [
+        {
+          "feature": "V14",
+          "shap": 4.010769
+        },
+        {
+          "feature": "V4",
+          "shap": 1.487487
+        },
+        {
+          "feature": "V10",
+          "shap": 1.487047
+        },
+        {
+          "feature": "V12",
+          "shap": 0.987795
+        },
+        {
+          "feature": "V16",
+          "shap": 0.658386
+        }
+      ]
+    },
+    {
+      "risk_score": 0.999992,
+      "true_label": 1,
+      "top_reasons": [
+        {
+          "feature": "V14",
+          "shap": 3.92807
+        },
+        {
+          "feature": "V4",
+          "shap": 1.423721
+        },
+        {
+          "feature": "V10",
+          "shap": 1.413714
+        },
+        {
+          "feature": "V12",
+          "shap": 1.037552
+        },
+        {
+          "feature": "V16",
+          "shap": 0.6782
+        }
+      ]
+    },
+    {
+      "risk_score": 0.999992,
+      "true_label": 1,
+      "top_reasons": [
+        {
+          "feature": "V14",
+          "shap": 3.92807
+        },
+        {
+          "feature": "V4",
+          "shap": 1.423721
+        },
+        {
+          "feature": "V10",
+          "shap": 1.413714
+        },
+        {
+          "feature": "V12",
+          "shap": 1.037552
+        },
+        {
+          "feature": "V16",
+          "shap": 0.6782
+        }
+      ]
+    },
+    {
+      "risk_score": 0.999992,
+      "true_label": 1,
+      "top_reasons": [
+        {
+          "feature": "V14",
+          "shap": 3.861515
+        },
+        {
+          "feature": "V4",
+          "shap": 1.602702
+        },
+        {
+          "feature": "V10",
+          "shap": 1.403127
+        },
+        {
+          "feature": "V12",
+          "shap": 0.950633
+        },
+        {
+          "feature": "V16",
+          "shap": 0.661338
+        }
+      ]
+    },
+    {
+      "risk_score": 0.999991,
+      "true_label": 1,
+      "top_reasons": [
+        {
+          "feature": "V14",
+          "shap": 3.815649
+        },
+        {
+          "feature": "V4",
+          "shap": 1.528776
+        },
+        {
+          "feature": "V10",
+          "shap": 1.329157
+        },
+        {
+          "feature": "V12",
+          "shap": 0.988865
+        },
+        {
+          "feature": "V16",
+          "shap": 0.694847
+        }
+      ]
+    },
+    {
+      "risk_score": 0.99999,
+      "true_label": 1,
+      "top_reasons": [
+        {
+          "feature": "V14",
+          "shap": 3.940788
+        },
+        {
+          "feature": "V10",
+          "shap": 1.420628
+        },
+        {
+          "feature": "V4",
+          "shap": 1.371498
+        },
+        {
+          "feature": "V12",
+          "shap": 0.921255
+        },
+        {
+          "feature": "V16",
+          "shap": 0.678725
+        }
+      ]
+    }
+  ],
+  "note": "SHAP values are in log-odds contribution units against the model's base value. ULB's V1-V28 are PCA components with no published loadings, so a component name is not a human-readable reason on this dataset, what this demonstrates is the mechanism and its cost, which carries over to a feature set with real column names."
+}

@@ -1,0 +1,50 @@
+{
+  "precision": 0.93,
+  "recall": 0.8852,
+  "f1": 0.907,
+  "pr_auc": 0.953,
+  "roc_auc": 0.9976,
+  "threshold": 0.8767,
+  "n_positive": 270,
+  "n_total": 14670,
+  "false_positive_rate_thin_file_legit": 0.00616,
+  "false_positive_rate_established_legit": 0.000251,
+  "recall_by_ring_sophistication": {
+    "cheap": {
+      "n": 119,
+      "recall": 1.0
+    },
+    "moderate": {
+      "n": 93,
+      "recall": 0.903226
+    },
+    "advanced": {
+      "n": 58,
+      "recall": 0.62069
+    }
+  },
+  "feature_importance": {
+    "credit_file_age_months": 0.40515,
+    "n_tradelines": 0.2521,
+    "profile_completeness": 0.08634,
+    "applications_per_device_30d": 0.07148,
+    "declared_income_to_segment_median": 0.04799,
+    "email_domain_age_days": 0.03113,
+    "applications_per_ip_subnet_24h": 0.0253,
+    "identity_element_consistency": 0.01998,
+    "form_corrections": 0.01974,
+    "address_reuse_count": 0.01811,
+    "form_dwell_seconds": 0.0131,
+    "is_voip_phone": 0.00958
+  },
+  "fairness_note": "false_positive_rate_thin_file_legit is the rate at which genuine applicants with little or no credit history are flagged. It is reported separately because that subgroup shares the synthetic population's headline signature; a detector that scores well on the aggregate while failing here is declining people for being new.",
+  "sophistication_note": "recall_by_ring_sophistication splits detection by how much infrastructure the ring rotates. Cheap rings are caught on device/IP/domain reuse alone; advanced rings have no infrastructure tell left and are only reachable through the statistical signature of a fabricated persona. The aggregate number alone would hide that gap.",
+  "population": {
+    "n_applications": 48900,
+    "n_legit": 48000,
+    "n_thin_file_legit": 8000,
+    "n_synthetic": 900,
+    "n_rings": 45,
+    "synthetic_rate": 0.018405
+  }
+}

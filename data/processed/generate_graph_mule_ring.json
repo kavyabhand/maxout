@@ -1,0 +1,12 @@
+{
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "pr_auc": 1.0,
+  "roc_auc": 1.0,
+  "threshold": 0.9958,
+  "n_positive": 18,
+  "n_total": 6018,
+  "n_injected_rings": 60,
+  "caveat": "small test-positive count; see generalization check for out-of-distribution validation"
+}

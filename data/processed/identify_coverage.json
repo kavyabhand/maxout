@@ -1,0 +1,38 @@
+{
+  "total_attacks": 17,
+  "by_status": {
+    "simulated": 8,
+    "modeled": 2,
+    "taxonomy_only": 7
+  },
+  "by_category": {
+    "A": {
+      "category_name": "Identity & Onboarding Fraud",
+      "simulated": 1,
+      "modeled": 0,
+      "taxonomy_only": 3,
+      "total": 4
+    },
+    "B": {
+      "category_name": "Social-Engineering & Authorization Fraud",
+      "simulated": 1,
+      "modeled": 1,
+      "taxonomy_only": 3,
+      "total": 5
+    },
+    "C": {
+      "category_name": "Transaction & Network-Level Attacks",
+      "simulated": 3,
+      "modeled": 0,
+      "taxonomy_only": 1,
+      "total": 4
+    },
+    "D": {
+      "category_name": "Agentic Commerce Fraud",
+      "simulated": 3,
+      "modeled": 1,
+      "taxonomy_only": 0,
+      "total": 4
+    }
+  }
+}

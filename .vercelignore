@@ -1,0 +1,14 @@
+# The deployed artifact is the frontend bundle. Everything the pipeline
+# needs to regenerate results stays in the repository but has no business
+# in a static deployment, and shipping the ML stack would blow the build.
+.venv
+data/raw
+models
+tests
+janus
+backend
+scripts
+docs
+dev
+*.egg-info
+__pycache__

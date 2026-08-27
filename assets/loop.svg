@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 460" width="1600" height="460" role="img" aria-label="Identify feeds Generate feeds Defend, and what got through becomes the next training set">
+  <title>The closed loop</title>
+  <defs>
+    <marker id="grey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#6B7280"/>
+    </marker>
+    <marker id="red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#B4242B"/>
+    </marker>
+  </defs>
+  <rect width="1600" height="460" fill="#FFFFFF"/>
+
+  <g font-family="Helvetica Neue, Helvetica, Arial, sans-serif" text-anchor="middle">
+    <rect x="90"  y="96" width="380" height="180" rx="20" fill="#FFFFFF" stroke="#1E2530" stroke-width="3.5"/>
+    <text x="280"  y="176" font-size="46" font-weight="700" letter-spacing="2" fill="#1E2530">IDENTIFY</text>
+    <text x="280"  y="220" font-size="21" fill="#6B7280">17 vectors, 4 categories</text>
+
+    <rect x="610" y="96" width="380" height="180" rx="20" fill="#FFFFFF" stroke="#1E2530" stroke-width="3.5"/>
+    <text x="800" y="176" font-size="46" font-weight="700" letter-spacing="2" fill="#1E2530">GENERATE</text>
+    <text x="800" y="220" font-size="21" fill="#6B7280">simulate, then score the fidelity</text>
+
+    <rect x="1130" y="96" width="380" height="180" rx="20" fill="#FFFFFF" stroke="#23575E" stroke-width="3.5"/>
+    <text x="1320" y="176" font-size="46" font-weight="700" letter-spacing="2" fill="#1E2530">DEFEND</text>
+    <text x="1320" y="220" font-size="21" fill="#6B7280">six families, one stacked decision</text>
+  </g>
+
+  <path d="M480 186 H600"  stroke="#6B7280" stroke-width="3" fill="none" marker-end="url(#grey)"/>
+  <path d="M1000 186 H1120" stroke="#6B7280" stroke-width="3" fill="none" marker-end="url(#grey)"/>
+
+  <!-- The return path is the subject of the diagram, so it is the only
+       coloured, heavier line here. -->
+  <path d="M1320 276 V366 H280 V286" stroke="#B4242B" stroke-width="7" fill="none"
+        stroke-linecap="round" stroke-linejoin="round" marker-end="url(#red)"/>
+  <text x="800" y="412" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="26" fill="#6B7280">what got through becomes the next training set</text>
+</svg>

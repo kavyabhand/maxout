@@ -1,0 +1,27 @@
+{
+  "single_row_scoring_ms": {
+    "n_samples": 500,
+    "mean": 3.1567,
+    "p50": 3.112,
+    "p95": 3.6695,
+    "p99": 4.2546,
+    "max": 7.3845
+  },
+  "batched_scoring": {
+    "100": {
+      "total_ms": 3.694,
+      "ms_per_row": 0.03694
+    },
+    "1000": {
+      "total_ms": 6.091,
+      "ms_per_row": 0.00609
+    },
+    "10000": {
+      "total_ms": 35.327,
+      "ms_per_row": 0.00353
+    }
+  },
+  "n_features": 29,
+  "hardware": "Kaggle notebook CPU",
+  "note": "Single-row latency is the number that matters for an inline authorization decision; batched throughput is what a queue-based async tier would see. Neither includes network or feature-assembly time, which in a real deployment dominate model time."
+}

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 800" width="1600" height="800" role="img" aria-label="A gradient-boosted tree and a graph neural network, the two halves of the hybrid detector">
+  <title>Trees and graph embeddings, stacked</title>
+  <rect width="1600" height="800" fill="#FFFFFF"/>
+
+  <!-- Gradient-boosted trees: the fast, explainable, inline half. -->
+  <g stroke="#B4242B" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M40 400 H210"/>
+    <path d="M210 400 V180 H340"/>
+    <path d="M210 400 V620 H340"/>
+    <path d="M340 180 V90  H470"/>
+    <path d="M340 180 V270 H470"/>
+    <path d="M340 620 V530 H470"/>
+    <path d="M340 620 V710 H470"/>
+    <path d="M470 90  V50  H640"/><path d="M470 90  H640"/><path d="M470 90  V130 H640"/>
+    <path d="M470 270 V230 H640"/><path d="M470 270 H640"/><path d="M470 270 V310 H640"/>
+    <path d="M470 530 V490 H640"/><path d="M470 530 H640"/><path d="M470 530 V570 H640"/>
+    <path d="M470 710 V670 H640"/><path d="M470 710 H640"/><path d="M470 710 V750 H640"/>
+  </g>
+  <g fill="#B4242B">
+    <circle cx="648" cy="50" r="14"/><circle cx="648" cy="90" r="14"/><circle cx="648" cy="130" r="14"/>
+    <circle cx="648" cy="230" r="14"/><circle cx="648" cy="270" r="14"/><circle cx="648" cy="310" r="14"/>
+    <circle cx="648" cy="490" r="14"/><circle cx="648" cy="530" r="14"/><circle cx="648" cy="570" r="14"/>
+    <circle cx="648" cy="670" r="14"/><circle cx="648" cy="710" r="14"/><circle cx="648" cy="750" r="14"/>
+  </g>
+
+  <!-- Graph neural network: the relational half, whose embeddings are
+       concatenated back into the trees. -->
+  <g stroke="#23575E" stroke-width="8" fill="none" stroke-linecap="round">
+    <path d="M760 230 H1010"/><path d="M760 300 H1010"/><path d="M760 400 H1010"/>
+    <path d="M760 500 H1010"/><path d="M760 570 H1010"/>
+    <path d="M1300 300 H1470"/><path d="M1300 400 H1560"/><path d="M1300 500 H1470"/>
+  </g>
+  <g fill="none" stroke="#23575E" stroke-width="8" stroke-linejoin="round">
+    <path d="M960 200 L1130 130 L1130 590 L960 660 Z"/>
+    <path d="M1060 180 L1230 120 L1230 620 L1060 680 Z"/>
+    <path d="M1160 190 L1330 150 L1330 610 L1160 650 Z"/>
+  </g>
+  <g fill="#23575E">
+    <circle cx="1478" cy="300" r="14"/><circle cx="1478" cy="500" r="14"/>
+    <circle cx="1245" cy="290" r="7"/><circle cx="1245" cy="330" r="7"/><circle cx="1245" cy="370" r="7"/>
+    <circle cx="1245" cy="410" r="7"/><circle cx="1245" cy="450" r="7"/><circle cx="1245" cy="490" r="7"/>
+    <circle cx="1285" cy="310" r="7"/><circle cx="1285" cy="350" r="7"/><circle cx="1285" cy="390" r="7"/>
+    <circle cx="1285" cy="430" r="7"/><circle cx="1285" cy="470" r="7"/>
+    <circle cx="1010" cy="250" r="7"/><circle cx="1050" cy="270" r="7"/><circle cx="1010" cy="530" r="7"/>
+    <circle cx="1050" cy="560" r="7"/><circle cx="1110" cy="240" r="7"/><circle cx="1150" cy="265" r="7"/>
+  </g>
+</svg>
